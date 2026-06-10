@@ -1,17 +1,13 @@
 const audio = document.querySelector("#audioPlayer");
 const playButton = document.querySelector("#playButton");
-const replayButton = document.querySelector("#replayButton");
-const loopButton = document.querySelector("#loopButton");
 const seekBar = document.querySelector("#seekBar");
-const volumeBar = document.querySelector("#volumeBar");
 const currentTimeLabel = document.querySelector("#currentTime");
 const durationLabel = document.querySelector("#duration");
 const statusText = document.querySelector("#statusText");
 const screen = document.querySelector(".music-screen");
 
 audio.loop = true;
-audio.volume = Number(volumeBar.value);
-volumeBar.style.setProperty("--volume", `${Number(volumeBar.value) * 100}%`);
+audio.volume = 0.8;
 
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) return "0:00";
@@ -57,31 +53,10 @@ async function togglePlayback() {
 
 playButton.addEventListener("click", togglePlayback);
 
-replayButton.addEventListener("click", async () => {
-  audio.currentTime = 0;
-  updateProgress();
-
-  if (audio.paused) {
-    await togglePlayback();
-  }
-});
-
-loopButton.addEventListener("click", () => {
-  audio.loop = !audio.loop;
-  loopButton.classList.toggle("active", audio.loop);
-  loopButton.setAttribute("aria-label", audio.loop ? "Loop đang bật" : "Loop đang tắt");
-  statusText.textContent = audio.loop ? "Loop đang bật." : "Loop đã tắt.";
-});
-
 seekBar.addEventListener("input", () => {
   const duration = audio.duration || 0;
   audio.currentTime = (Number(seekBar.value) / 100) * duration;
   updateProgress();
-});
-
-volumeBar.addEventListener("input", () => {
-  audio.volume = Number(volumeBar.value);
-  volumeBar.style.setProperty("--volume", `${audio.volume * 100}%`);
 });
 
 audio.addEventListener("loadedmetadata", updateProgress);

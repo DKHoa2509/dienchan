@@ -1,13 +1,10 @@
 :root {
   --brown: #3c2109;
-  --brown-soft: #77511d;
   --gold: #d79b25;
   --gold-deep: #ba7711;
   --cream: #fff6df;
-  --cream-soft: rgba(255, 249, 231, 0.78);
-  --glass: rgba(255, 245, 219, 0.46);
-  --line: rgba(255, 243, 209, 0.6);
-  --shadow: 0 24px 54px rgba(99, 60, 9, 0.28);
+  --line: rgba(255, 243, 209, 0.66);
+  --shadow: 0 24px 54px rgba(99, 60, 9, 0.26);
 }
 
 * {
@@ -23,8 +20,7 @@ body {
   overflow: hidden;
   background: #f4dca5;
   color: var(--brown);
-  font-family:
-    ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 button,
@@ -38,15 +34,11 @@ button {
   cursor: pointer;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 .music-screen {
   position: relative;
+  display: grid;
   width: 100%;
-  min-height: 100svh;
+  min-height: 100dvh;
   overflow: hidden;
   isolation: isolate;
 }
@@ -59,7 +51,7 @@ a {
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 .music-screen::before,
@@ -73,13 +65,13 @@ a {
 .music-screen::before {
   z-index: -2;
   background:
-    linear-gradient(180deg, rgba(255, 244, 215, 0.14), rgba(255, 237, 188, 0.38) 58%, rgba(255, 238, 190, 0.9)),
-    radial-gradient(circle at 50% 5%, rgba(255, 252, 237, 0.58), transparent 26rem);
+    linear-gradient(180deg, rgba(255, 244, 215, 0.18), rgba(255, 237, 188, 0.45) 56%, rgba(255, 238, 190, 0.92)),
+    radial-gradient(circle at 50% 8%, rgba(255, 252, 237, 0.54), transparent 24rem);
 }
 
 .music-screen::after {
   z-index: -1;
-  box-shadow: inset 0 0 3.5rem rgba(92, 52, 8, 0.18);
+  box-shadow: inset 0 0 3.5rem rgba(92, 52, 8, 0.16);
   animation: warm-breathe 7s ease-in-out infinite;
 }
 
@@ -94,158 +86,90 @@ a {
 .romance-layer span {
   position: absolute;
   display: block;
-  width: 0.42rem;
-  height: 0.42rem;
+  width: 0.36rem;
+  height: 0.36rem;
   border-radius: 999px;
-  background: rgba(255, 239, 178, 0.88);
+  background: rgba(255, 239, 178, 0.82);
   box-shadow:
-    0 0 0.7rem rgba(255, 219, 116, 0.72),
-    0 0 1.7rem rgba(255, 246, 216, 0.58);
+    0 0 0.7rem rgba(255, 219, 116, 0.7),
+    0 0 1.6rem rgba(255, 246, 216, 0.48);
   opacity: 0;
   animation: floating-spark 9s linear infinite;
 }
 
 .romance-layer span:nth-child(1) {
-  left: 12%;
+  left: 13%;
   bottom: 18%;
   animation-delay: 0s;
-  animation-duration: 8s;
 }
 
 .romance-layer span:nth-child(2) {
-  left: 27%;
-  bottom: 8%;
-  width: 0.34rem;
-  height: 0.34rem;
-  animation-delay: 1.5s;
-  animation-duration: 9.5s;
-}
-
-.romance-layer span:nth-child(3) {
-  left: 48%;
-  bottom: 12%;
-  width: 0.5rem;
-  height: 0.5rem;
-  animation-delay: 3s;
+  left: 31%;
+  bottom: 7%;
+  animation-delay: 1.8s;
   animation-duration: 10s;
 }
 
+.romance-layer span:nth-child(3) {
+  left: 55%;
+  bottom: 10%;
+  width: 0.44rem;
+  height: 0.44rem;
+  animation-delay: 3.4s;
+}
+
 .romance-layer span:nth-child(4) {
-  left: 69%;
-  bottom: 20%;
-  width: 0.32rem;
-  height: 0.32rem;
-  animation-delay: 4.4s;
+  left: 74%;
+  bottom: 16%;
+  animation-delay: 5s;
   animation-duration: 8.5s;
 }
 
 .romance-layer span:nth-child(5) {
-  left: 84%;
-  bottom: 10%;
-  width: 0.46rem;
-  height: 0.46rem;
-  animation-delay: 6s;
-  animation-duration: 9.3s;
-}
-
-.romance-layer span:nth-child(6) {
-  left: 58%;
-  bottom: 4%;
+  left: 88%;
+  bottom: 6%;
   width: 0.28rem;
   height: 0.28rem;
-  animation-delay: 7.2s;
-  animation-duration: 8.8s;
+  animation-delay: 6.7s;
 }
 
-.top-area {
+.player-card {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 4rem 1fr 4rem;
-  gap: 1rem;
-  align-items: center;
+  align-self: center;
+  width: min(100%, 430px);
+  margin: 0 auto;
   padding:
-    max(1.15rem, env(safe-area-inset-top))
-    1.45rem
-    0.75rem;
+    max(1rem, env(safe-area-inset-top))
+    clamp(1.25rem, 6vw, 2rem)
+    max(1.4rem, env(safe-area-inset-bottom));
 }
 
-.glass-button,
-.heart-button,
-.round-button {
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  background: var(--cream-soft);
-  box-shadow:
-    0 14px 32px rgba(123, 77, 13, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(14px);
-}
-
-.glass-button {
-  width: 3.35rem;
-  height: 3.35rem;
-}
-
-.glass-button svg {
-  width: 1.65rem;
-  height: 1.65rem;
-  fill: none;
-  stroke: var(--brown);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2.3;
-}
-
-.screen-title {
+.title-area {
+  margin-bottom: clamp(0.9rem, 3dvh, 1.5rem);
   text-align: center;
 }
 
-.screen-title p,
-.screen-title span {
-  display: block;
+.title-area p {
   margin: 0;
-}
-
-.screen-title p {
-  font-size: clamp(1.9rem, 8vw, 2.28rem);
-  line-height: 1.05;
-}
-
-.screen-title span {
-  margin-top: 0.22rem;
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-  font-size: 0.96rem;
-  font-weight: 650;
-}
-
-.screen-title span::after {
-  content: "›";
-  margin-left: 0.35rem;
-  font-size: 1.35rem;
-  line-height: 0;
-}
-
-.artwork-wrap {
-  position: relative;
-  z-index: 1;
-  width: min(68vw, 19.25rem);
-  margin: 0.55rem auto 1.2rem;
-  animation: artwork-float 6s ease-in-out infinite;
+  font-size: clamp(2.4rem, 12vw, 3.35rem);
+  line-height: 1;
+  text-shadow: 0 0.35rem 1.8rem rgba(83, 49, 8, 0.18);
 }
 
 .artwork-card {
+  width: min(78vw, 21rem);
+  margin: 0 auto clamp(1.65rem, 4dvh, 2.25rem);
   overflow: hidden;
   aspect-ratio: 1;
   border: 1.5px solid rgba(255, 247, 222, 0.72);
-  border-radius: 1.45rem;
+  border-radius: 1.65rem;
   background: rgba(255, 245, 219, 0.18);
   box-shadow:
-    0 1.2rem 2.4rem rgba(117, 76, 17, 0.28),
+    var(--shadow),
     inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  animation: artwork-float 6s ease-in-out infinite;
 }
 
 .artwork-card img {
@@ -257,25 +181,8 @@ a {
   animation: artwork-glow 8s ease-in-out infinite;
 }
 
-.heart-button {
-  position: absolute;
-  right: -0.55rem;
-  bottom: -0.55rem;
-  width: 3.25rem;
-  height: 3.25rem;
-  animation: heart-beat 2.8s ease-in-out infinite;
-}
-
-.heart-button svg {
-  width: 1.35rem;
-  height: 1.35rem;
-  fill: var(--gold);
-}
-
 .playback-area {
-  position: relative;
-  z-index: 1;
-  width: min(76vw, 20.8rem);
+  width: min(82vw, 22rem);
   margin: 0 auto;
 }
 
@@ -288,58 +195,26 @@ a {
   white-space: nowrap;
 }
 
-.more-button {
-  position: absolute;
-  right: 0;
-  top: -0.25rem;
-  display: grid;
-  width: 2.25rem;
-  height: 2.25rem;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(255, 249, 231, 0.62);
-}
-
-.more-button svg {
-  width: 1.35rem;
-  height: 1.35rem;
-  fill: none;
-  stroke: var(--brown);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 3.2;
-}
-
-.progress-group {
-  padding-top: 2.55rem;
-}
-
-.seek-bar,
-.volume-bar {
+.seek-bar {
   display: block;
   width: 100%;
+  height: 1.35rem;
   margin: 0;
   appearance: none;
   background: transparent;
 }
 
-.seek-bar {
-  height: 1.3rem;
-}
-
-.seek-bar::-webkit-slider-runnable-track,
-.volume-bar::-webkit-slider-runnable-track {
+.seek-bar::-webkit-slider-runnable-track {
+  height: 0.34rem;
   border-radius: 999px;
   background:
     linear-gradient(90deg, var(--gold) var(--progress, 0%), rgba(162, 107, 34, 0.2) 0);
 }
 
-.seek-bar::-webkit-slider-runnable-track {
-  height: 0.32rem;
-}
-
-.seek-bar::-webkit-slider-thumb,
-.volume-bar::-webkit-slider-thumb {
+.seek-bar::-webkit-slider-thumb {
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.33rem;
   appearance: none;
   border: 2px solid #fff9e8;
   border-radius: 999px;
@@ -347,55 +222,43 @@ a {
   box-shadow: 0 3px 10px rgba(95, 55, 7, 0.3);
 }
 
-.seek-bar::-webkit-slider-thumb {
-  width: 0.92rem;
-  height: 0.92rem;
-  margin-top: -0.3rem;
+.seek-bar::-moz-range-track {
+  height: 0.34rem;
+  border-radius: 999px;
+  background: rgba(162, 107, 34, 0.2);
+}
+
+.seek-bar::-moz-range-progress {
+  height: 0.34rem;
+  border-radius: 999px;
+  background: var(--gold);
+}
+
+.seek-bar::-moz-range-thumb {
+  width: 0.86rem;
+  height: 0.86rem;
+  border: 2px solid #fff9e8;
+  border-radius: 999px;
+  background: var(--gold);
 }
 
 .time-row {
   display: flex;
   justify-content: space-between;
-  margin-top: 0.28rem;
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-  font-size: 0.92rem;
+  margin-top: 0.38rem;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
   font-variant-numeric: tabular-nums;
-  font-weight: 650;
+  font-weight: 750;
 }
 
-.main-controls {
-  display: grid;
-  grid-template-columns: 2.25rem 3.4rem 5rem 3.4rem 2.25rem;
-  gap: 0.82rem;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1.6rem;
-}
-
-.flat-button,
-.round-button,
 .play-button {
+  position: relative;
   display: grid;
+  width: clamp(5.4rem, 24vw, 6.35rem);
+  height: clamp(5.4rem, 24vw, 6.35rem);
   place-items: center;
-}
-
-.flat-button {
-  width: 2.25rem;
-  height: 2.25rem;
-  background: transparent;
-  color: var(--gold-deep);
-}
-
-.round-button {
-  width: 3.3rem;
-  height: 3.3rem;
-}
-
-.play-button {
-  width: 5rem;
-  height: 5rem;
+  margin: clamp(1.25rem, 4dvh, 2rem) auto 0;
   border-radius: 999px;
   background:
     radial-gradient(circle at 35% 25%, #ffd976, #dc9418 70%),
@@ -408,35 +271,10 @@ a {
   animation: play-glow 4s ease-in-out infinite;
 }
 
-.flat-button svg,
-.round-button svg,
-.play-button svg,
-.volume-row svg,
-.tab-row svg {
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2.1;
-}
-
-.flat-button svg {
-  width: 1.45rem;
-  height: 1.45rem;
-}
-
-.round-button svg {
-  width: 1.45rem;
-  height: 1.45rem;
-  fill: var(--brown);
-  stroke-width: 0;
-}
-
 .play-button svg {
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 2.4rem;
+  height: 2.4rem;
   fill: currentColor;
-  stroke-width: 0;
 }
 
 .pause-icon,
@@ -446,21 +284,6 @@ a {
 
 .is-playing .pause-icon {
   display: block;
-}
-
-.bottom-dock {
-  position: absolute;
-  z-index: 1;
-  right: 0.9rem;
-  bottom: 0;
-  left: 0.9rem;
-  overflow: hidden;
-  border: 1px solid rgba(255, 245, 220, 0.65);
-  border-bottom: 0;
-  border-radius: 2rem 2rem 0 0;
-  background: rgba(255, 244, 214, 0.68);
-  box-shadow: 0 -1rem 3.5rem rgba(120, 77, 15, 0.18);
-  backdrop-filter: blur(18px) saturate(1.18);
 }
 
 @keyframes warm-breathe {
@@ -481,7 +304,7 @@ a {
   }
 
   50% {
-    transform: translateY(-0.38rem);
+    transform: translateY(-0.32rem);
   }
 }
 
@@ -492,26 +315,7 @@ a {
   }
 
   50% {
-    filter: saturate(1.08) brightness(1.04);
-  }
-}
-
-@keyframes heart-beat {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  16% {
-    transform: scale(1.08);
-  }
-
-  30% {
-    transform: scale(0.98);
-  }
-
-  44% {
-    transform: scale(1.04);
+    filter: saturate(1.06) brightness(1.035);
   }
 }
 
@@ -541,89 +345,17 @@ a {
   }
 
   15% {
-    opacity: 0.78;
+    opacity: 0.72;
   }
 
   70% {
-    opacity: 0.64;
+    opacity: 0.58;
   }
 
   100% {
     opacity: 0;
-    transform: translate3d(1.1rem, -19rem, 0) scale(1.18);
+    transform: translate3d(1rem, -16rem, 0) scale(1.14);
   }
-}
-
-.volume-row {
-  display: grid;
-  grid-template-columns: 1.45rem 1fr 1.45rem 1px 1.45rem;
-  gap: 0.9rem;
-  align-items: center;
-  padding: 1.15rem 1.55rem 1rem;
-  color: var(--brown-soft);
-}
-
-.volume-row svg {
-  width: 1.45rem;
-  height: 1.45rem;
-}
-
-.divider {
-  width: 1px;
-  height: 2rem;
-  background: rgba(156, 103, 35, 0.18);
-}
-
-.volume-bar {
-  height: 1rem;
-}
-
-.volume-bar::-webkit-slider-runnable-track {
-  height: 0.28rem;
-  background:
-    linear-gradient(90deg, var(--gold) var(--volume, 75%), rgba(162, 107, 34, 0.18) 0);
-}
-
-.volume-bar::-webkit-slider-thumb {
-  width: 0.88rem;
-  height: 0.88rem;
-  margin-top: -0.3rem;
-}
-
-.tab-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid rgba(156, 103, 35, 0.18);
-  padding:
-    0.92rem
-    0.6rem
-    max(0.85rem, env(safe-area-inset-bottom));
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-}
-
-.tab-row a {
-  display: grid;
-  gap: 0.3rem;
-  place-items: center;
-  color: rgba(86, 54, 14, 0.68);
-  font-size: 0.74rem;
-  font-weight: 700;
-}
-
-.tab-row a.active {
-  color: var(--gold-deep);
-}
-
-.tab-row svg {
-  width: 1.45rem;
-  height: 1.45rem;
-}
-
-.tab-row a.active svg {
-  fill: currentColor;
-  stroke-width: 0;
 }
 
 @media (min-width: 431px) {
@@ -634,58 +366,31 @@ a {
 
   .music-screen {
     width: min(100vw, 430px);
-    min-height: min(100svh, 932px);
+    min-height: min(100dvh, 932px);
     border-right: 1px solid rgba(151, 96, 24, 0.2);
     border-left: 1px solid rgba(151, 96, 24, 0.2);
     box-shadow: 0 0 5rem rgba(95, 55, 7, 0.25);
   }
 }
 
-@media (max-height: 760px) {
-  .top-area {
-    padding-top: max(0.75rem, env(safe-area-inset-top));
-    padding-bottom: 0.35rem;
-  }
-
-  .glass-button {
-    width: 2.85rem;
-    height: 2.85rem;
-  }
-
-  .screen-title p {
-    font-size: 1.65rem;
-  }
-
-  .artwork-wrap {
-    width: min(58vw, 16.75rem);
+@media (max-height: 700px) {
+  .title-area {
     margin-bottom: 0.75rem;
   }
 
-  .progress-group {
-    padding-top: 1.55rem;
+  .title-area p {
+    font-size: clamp(2rem, 10vw, 2.65rem);
   }
 
-  .main-controls {
-    margin-top: 1rem;
+  .artwork-card {
+    width: min(62vw, 16.8rem);
+    margin-bottom: 1.1rem;
   }
 
   .play-button {
-    width: 4.35rem;
-    height: 4.35rem;
-  }
-
-  .bottom-dock {
-    right: 0.7rem;
-    left: 0.7rem;
-  }
-
-  .volume-row {
-    padding-top: 0.85rem;
-    padding-bottom: 0.7rem;
-  }
-
-  .tab-row {
-    padding-top: 0.7rem;
+    width: 4.9rem;
+    height: 4.9rem;
+    margin-top: 1rem;
   }
 }
 
