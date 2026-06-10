@@ -133,6 +133,41 @@ button {
   animation-delay: 6.7s;
 }
 
+.romance-layer span:nth-child(6) {
+  left: 43%;
+  bottom: 24%;
+  width: 0.24rem;
+  height: 0.24rem;
+  animation-delay: 2.6s;
+  animation-duration: 7.5s;
+}
+
+.romance-layer span:nth-child(7) {
+  left: 63%;
+  bottom: 28%;
+  width: 0.3rem;
+  height: 0.3rem;
+  animation-delay: 4.8s;
+  animation-duration: 8.2s;
+}
+
+.glow-orbit {
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  z-index: 0;
+  width: min(82vw, 23rem);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 45% 48%, rgba(255, 245, 199, 0.34), transparent 38%),
+    radial-gradient(circle at 62% 32%, rgba(228, 169, 42, 0.18), transparent 48%);
+  filter: blur(0.3rem);
+  transform: translateX(-50%);
+  animation: glow-drift 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
 .player-card {
   position: relative;
   z-index: 1;
@@ -141,26 +176,14 @@ button {
   width: min(100%, 430px);
   margin: 0 auto;
   padding:
-    max(1rem, env(safe-area-inset-top))
+    max(1.35rem, env(safe-area-inset-top))
     clamp(1.25rem, 6vw, 2rem)
     max(1.4rem, env(safe-area-inset-bottom));
 }
 
-.title-area {
-  margin-bottom: clamp(0.9rem, 3dvh, 1.5rem);
-  text-align: center;
-}
-
-.title-area p {
-  margin: 0;
-  font-size: clamp(2.4rem, 12vw, 3.35rem);
-  line-height: 1;
-  text-shadow: 0 0.35rem 1.8rem rgba(83, 49, 8, 0.18);
-}
-
 .artwork-card {
-  width: min(78vw, 21rem);
-  margin: 0 auto clamp(1.65rem, 4dvh, 2.25rem);
+  width: min(88vw, 23.6rem);
+  margin: clamp(0.3rem, 2dvh, 1rem) auto clamp(1.9rem, 4.5dvh, 2.55rem);
   overflow: hidden;
   aspect-ratio: 1;
   border: 1.5px solid rgba(255, 247, 222, 0.72);
@@ -258,7 +281,7 @@ button {
   width: clamp(5.4rem, 24vw, 6.35rem);
   height: clamp(5.4rem, 24vw, 6.35rem);
   place-items: center;
-  margin: clamp(1.25rem, 4dvh, 2rem) auto 0;
+  margin: clamp(2.7rem, 8dvh, 4rem) auto 0;
   border-radius: 999px;
   background:
     radial-gradient(circle at 35% 25%, #ffd976, #dc9418 70%),
@@ -319,6 +342,19 @@ button {
   }
 }
 
+@keyframes glow-drift {
+  0%,
+  100% {
+    opacity: 0.56;
+    transform: translateX(-50%) translateY(0) scale(0.96);
+  }
+
+  50% {
+    opacity: 0.86;
+    transform: translateX(-50%) translateY(-0.7rem) scale(1.03);
+  }
+}
+
 @keyframes play-glow {
   0%,
   100% {
@@ -374,23 +410,15 @@ button {
 }
 
 @media (max-height: 700px) {
-  .title-area {
-    margin-bottom: 0.75rem;
-  }
-
-  .title-area p {
-    font-size: clamp(2rem, 10vw, 2.65rem);
-  }
-
   .artwork-card {
-    width: min(62vw, 16.8rem);
+    width: min(74vw, 19rem);
     margin-bottom: 1.1rem;
   }
 
   .play-button {
     width: 4.9rem;
     height: 4.9rem;
-    margin-top: 1rem;
+    margin-top: 1.9rem;
   }
 }
 

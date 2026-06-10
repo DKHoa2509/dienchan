@@ -32,7 +32,7 @@ function updateProgress() {
 function setPlayingState(isPlaying) {
   screen.classList.toggle("is-playing", isPlaying);
   playButton.setAttribute("aria-label", isPlaying ? "Tạm dừng nhạc" : "Phát nhạc");
-  statusText.textContent = isPlaying ? "Đang phát lặp liên tục." : "Đã tạm dừng.";
+  statusText.textContent = isPlaying ? "Nhạc đang chạy lặp liên tục." : "Đã tạm dừng.";
 }
 
 async function togglePlayback() {
