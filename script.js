@@ -8,7 +8,6 @@ const currentTimeLabel = document.querySelector("#currentTime");
 const durationLabel = document.querySelector("#duration");
 const statusText = document.querySelector("#statusText");
 const screen = document.querySelector(".music-screen");
-const clockText = document.querySelector("#clockText");
 
 audio.loop = true;
 audio.volume = Number(volumeBar.value);
@@ -21,15 +20,6 @@ function formatTime(seconds) {
   const remainingSeconds = Math.floor(seconds % 60).toString().padStart(2, "0");
 
   return `${minutes}:${remainingSeconds}`;
-}
-
-function updateClock() {
-  const now = new Date();
-  clockText.textContent = now.toLocaleTimeString("vi-VN", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });
 }
 
 function updateProgress() {
@@ -100,6 +90,4 @@ audio.addEventListener("play", () => setPlayingState(true));
 audio.addEventListener("pause", () => setPlayingState(false));
 audio.addEventListener("ended", updateProgress);
 
-updateClock();
 updateProgress();
-setInterval(updateClock, 30000);
